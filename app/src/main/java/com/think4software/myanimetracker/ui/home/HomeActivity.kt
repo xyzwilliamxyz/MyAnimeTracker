@@ -8,7 +8,9 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.think4software.myanimetracker.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.think4software.myanimetracker.ui.home.seasonal.SeasonalAnimeFragment
+import com.think4software.myanimetracker.ui.home.tracking.TrackingAnimeFragment
+import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -21,7 +23,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, NavigationView.OnNa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_home)
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -38,6 +40,8 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, NavigationView.OnNa
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navigation_view.setNavigationItemSelectedListener(this)
+        navigation_view.setCheckedItem(R.id.nav_tracking)
+        onNavigationItemSelected(navigation_view.menu.findItem(R.id.nav_tracking))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -51,6 +55,20 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, NavigationView.OnNa
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        val transaction = supportFragmentManager.beginTransaction()
+
+        when (item.itemId) {
+            R.id.nav_tracking -> {
+                transaction.replace(R.id.content_frame, TrackingAnimeFragment()).commit()
+            }
+            R.id.nav_seasonal -> {
+                transaction.replace(R.id.content_frame, SeasonalAnimeFragment()).commit()
+            }
+            R.id.nav_settings -> {
+                // TODO not implemented
+            }
+        }
+
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
