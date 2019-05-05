@@ -20,10 +20,12 @@ class SeasonalAnimeFragment: Fragment(), SeasonalAnimeContract.View {
 
         activity?.setTitle(R.string.seasonal_anime)
 
+        presenter.onStart()
+
         return view
     }
 
     override fun showLoading(showHide: Boolean) {
-
+        // TODO not implemented
     }
 }

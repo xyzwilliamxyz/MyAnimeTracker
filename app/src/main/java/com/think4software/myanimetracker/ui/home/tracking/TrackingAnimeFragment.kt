@@ -18,10 +18,12 @@ class TrackingAnimeFragment: Fragment(), TrackingAnimeContract.View {
 
         activity?.setTitle(R.string.tracking)
 
+        presenter.onStart()
+
         return view
     }
 
     override fun showLoading(showHide: Boolean) {
-
+        // TODO not implemented
     }
 }

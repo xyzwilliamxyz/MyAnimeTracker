@@ -17,6 +17,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "BASE_API_URL", '"https://api.jikan.moe/v3/"'
+        }
+
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+
+            buildConfigField "String", "BASE_API_URL", '"https://api.jikan.moe/v3/"'
         }
     }
 }

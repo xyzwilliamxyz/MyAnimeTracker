@@ -6,6 +6,6 @@ data class Anime(
     val coverUrl: String,
     val synopsis: String,
     val type: String,
-    val members: String,
-    val score: Float
+    val members: Int,
+    val score: Float?
 )

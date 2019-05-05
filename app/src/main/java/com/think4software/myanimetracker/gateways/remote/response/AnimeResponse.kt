@@ -9,5 +9,5 @@ data class AnimeResponse(
     val synopsis: String,
     val type: String,
     val members: Int,
-    val score: Float
+    val score: Float?
 )
