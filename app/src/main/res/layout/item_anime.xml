@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" xmlns:tools="http://schemas.android.com/tools"
+        tools:layout_width="125dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="2dp"
+        android:layout_margin="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/constraintlayout">
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@drawable/anime_sample"
+                android:id="@+id/iv_cover"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tv_title" />
+        <TextView
+                tools:text="One Punch Man Second Season"
+                android:textSize="12sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/iv_cover" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="4dp"/>
+        <TextView
+                tools:text="Anime"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_type"
+                android:textColor="@color/textHighlight"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title" app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="4dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

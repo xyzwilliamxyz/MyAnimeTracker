@@ -9,7 +9,7 @@ object DateUtils {
     }
 
     fun getCurrentSeason(): String {
-        return when (Calendar.getInstance().get(Calendar.MONTH)) {
+        return when (Calendar.getInstance().get(Calendar.MONTH) - 1) {
             Calendar.NOVEMBER, Calendar.DECEMBER, Calendar.JANUARY, Calendar.FEBRUARY -> "winter"
             Calendar.MARCH, Calendar.APRIL -> "spring"
             Calendar.MAY, Calendar.JUNE, Calendar.JULY, Calendar.AUGUST -> "summer"

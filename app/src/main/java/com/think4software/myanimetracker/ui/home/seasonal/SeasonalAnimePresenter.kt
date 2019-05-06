@@ -8,6 +8,7 @@ class SeasonalAnimePresenter(private val view: SeasonalAnimeContract.View,
                              private val getSeasonalAnime: GetSeasonalAnime): SeasonalAnimeContract.Presenter {
 
     override fun onStart() {
+        view.showLoading(true)
         getSeasonalAnime.execute(callback = SeasonalAnimeApiCallback())
     }
 
@@ -17,7 +18,7 @@ class SeasonalAnimePresenter(private val view: SeasonalAnimeContract.View,
 
     inner class SeasonalAnimeApiCallback: ApiCallback<List<Anime>> {
         override fun onSuccess(result: List<Anime>) {
-            // TODO not implemented
+            view.setAnimeList(result)
         }
 
         override fun onError() {
@@ -25,7 +26,7 @@ class SeasonalAnimePresenter(private val view: SeasonalAnimeContract.View,
         }
 
         override fun onTerminate() {
-            // TODO not implemented
+            view.showLoading(false)
         }
     }
 }
