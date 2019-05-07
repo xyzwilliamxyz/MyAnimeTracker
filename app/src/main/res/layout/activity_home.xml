@@ -19,12 +19,12 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
                 android:theme="@style/ToolbarStyle"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         <FrameLayout
                 android:id="@+id/content_frame"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"/>
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -36,5 +36,5 @@
             app:itemIconTint="@color/drawer_item_color"
             app:itemTextColor="@color/drawer_item_color"
             app:itemBackground="@android:color/transparent"
-            app:menu="@menu/menu_navigation" />
+            app:menu="@menu/menu_navigation"/>
 </androidx.drawerlayout.widget.DrawerLayout>
