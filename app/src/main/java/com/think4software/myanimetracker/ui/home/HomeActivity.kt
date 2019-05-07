@@ -1,6 +1,7 @@
 package com.think4software.myanimetracker.ui.home
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,8 @@ import com.think4software.myanimetracker.ui.home.tracking.TrackingAnimeFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
+
+
 
 
 class HomeActivity : AppCompatActivity(), HomeContract.View, NavigationView.OnNavigationItemSelectedListener {
@@ -79,5 +82,10 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, NavigationView.OnNa
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
     }
 }

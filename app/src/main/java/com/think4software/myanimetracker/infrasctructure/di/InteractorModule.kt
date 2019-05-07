@@ -4,5 +4,5 @@ import com.think4software.myanimetracker.interactors.GetSeasonalAnime
 import org.koin.dsl.module
 
 val interactorModule = module {
-    single { GetSeasonalAnime(get()) }
+    factory { GetSeasonalAnime(get()) }
 }

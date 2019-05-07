@@ -9,7 +9,7 @@ import com.think4software.myanimetracker.ui.home.tracking.TrackingAnimePresenter
 import org.koin.dsl.module
 
 val presenterModule = module {
-    single<HomeContract.Presenter> { (view: HomeContract.View) ->  HomePresenter(view) }
-    single<SeasonalAnimeContract.Presenter> { (view: SeasonalAnimeContract.View) ->  SeasonalAnimePresenter(view, get()) }
-    single<TrackingAnimeContract.Presenter> { (view: TrackingAnimeContract.View) ->  TrackingAnimePresenter(view) }
+    factory<HomeContract.Presenter> { (view: HomeContract.View) ->  HomePresenter(view) }
+    factory<SeasonalAnimeContract.Presenter> { (view: SeasonalAnimeContract.View) ->  SeasonalAnimePresenter(view, get()) }
+    factory<TrackingAnimeContract.Presenter> { (view: TrackingAnimeContract.View) ->  TrackingAnimePresenter(view) }
 }

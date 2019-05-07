@@ -4,5 +4,12 @@
     <color name="colorPrimaryDark">#1A237E</color>
     <color name="colorAccent">#D81B60</color>
     <color name="defaultBackground">#DCDCDC</color>
-    <color name="textHighlight">#0069C0</color>
+    <color name="animeType">#0069C0</color>
+
+    <color name="trackingColor">#FFF176</color>
+    <color name="notTrackingColor">#D0EEEEEE</color>
+    <color name="animeScore">#00701A</color>
+    <color name="transparentDarkBackground">#C0333333</color>
+
+
 </resources>

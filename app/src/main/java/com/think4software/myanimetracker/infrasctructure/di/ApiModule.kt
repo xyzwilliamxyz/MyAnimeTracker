@@ -8,14 +8,11 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-
 private val retrofit = provideRetrofitInterface()
 
 val apiModule = module {
-
     single { retrofit.create(AnimeApi::class.java) }
 }
-
 
 private fun provideRetrofitInterface(): Retrofit {
     return Retrofit.Builder()
