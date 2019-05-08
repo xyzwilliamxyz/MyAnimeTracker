@@ -16,6 +16,14 @@ class SeasonalAnimePresenter(private val view: SeasonalAnimeContract.View,
         getSeasonalAnime.dispose()
     }
 
+    override fun openAnime(anime: Anime) {
+        view.openAnimeScreen(anime)
+    }
+
+    override fun toggleTracking(anime: Anime) {
+        // TODO implement
+    }
+
     inner class SeasonalAnimeApiCallback: ApiCallback<List<Anime>> {
         override fun onSuccess(result: List<Anime>) {
             view.setAnimeList(result)

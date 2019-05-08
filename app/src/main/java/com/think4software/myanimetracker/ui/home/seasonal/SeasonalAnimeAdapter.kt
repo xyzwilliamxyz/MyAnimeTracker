@@ -8,18 +8,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.think4software.myanimetracker.R
 import com.think4software.myanimetracker.domain.Anime
-import com.think4software.myanimetracker.infrasctructure.glide.GlideApp
 import com.think4software.myanimetracker.utils.Constants
 import com.think4software.myanimetracker.utils.GlideUtils
+import com.think4software.myanimetracker.utils.getAnimationTypeColor
 import com.think4software.myanimetracker.utils.getScoreAsString
 import kotlinx.android.synthetic.main.item_anime.view.*
 import kotlinx.android.synthetic.main.view_tracking.view.*
 
 
-class SeasonalAnimeAdapter(private val context: Context/*, private val listener: OnAnimeClickListener*/)
+class SeasonalAnimeAdapter(private val context: Context,
+                           private val onItemClick: (anime: Anime) -> Unit,
+                           private val onTrackClick: (anime: Anime) -> Unit)
     : RecyclerView.Adapter<SeasonalAnimeAdapter.AnimeViewHolder>() {
 
     private var anime: MutableList<Anime> = mutableListOf()
@@ -41,8 +42,11 @@ class SeasonalAnimeAdapter(private val context: Context/*, private val listener:
 
     override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
         holder.title.text = anime[position].title
-        holder.subtitle.text = anime[position].type
+        holder.animationType.text = anime[position].type
         holder.score.text = "${Constants.STAR_CHARACTER} ${anime[position].getScoreAsString()}"
+
+        holder.animationType.setTextColor(anime[position].getAnimationTypeColor(context))
+        holder.separator.setBackgroundColor(anime[position].getAnimationTypeColor(context))
 
         // TODO remove later
         if (position in 0..3) {
@@ -56,16 +60,21 @@ class SeasonalAnimeAdapter(private val context: Context/*, private val listener:
 
     inner class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.tv_title
-        val subtitle: TextView = view.tv_type
+        val animationType: TextView = view.tv_type
         val cover: ImageView = view.iv_cover
+        val separator: View = view.v_separator
         val score: TextView = view.tv_score
         val watching: ImageView = view.iv_tracking
-//        private val item: ViewGroup = view.cl_item_movie
+        private val trackContainer: ViewGroup = view.framelayout_tracking
+        private val itemContainer: ViewGroup = view.constraintlayout_anime
 
         fun bindEvent(): AnimeViewHolder {
-//            item.setOnClickListener {
-//                listener.openMovie(anime[adapterPosition])
-//            }
+            itemContainer.setOnClickListener {
+                onItemClick(anime[adapterPosition])
+            }
+            trackContainer.setOnClickListener {
+                onTrackClick(anime[adapterPosition])
+            }
             return this
         }
     }

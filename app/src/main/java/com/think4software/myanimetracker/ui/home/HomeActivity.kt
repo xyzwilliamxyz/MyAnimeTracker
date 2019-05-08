@@ -23,6 +23,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, NavigationView.OnNa
     private val presenter: HomeContract.Presenter by inject { parametersOf(this) }
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var drawerLayout: DrawerLayout
+    private var currentlySelectedItem = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,18 +59,22 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, NavigationView.OnNa
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val transaction = supportFragmentManager.beginTransaction()
+        if (item.itemId != currentlySelectedItem) {
+            val transaction = supportFragmentManager.beginTransaction()
 
-        when (item.itemId) {
-            R.id.nav_tracking -> {
-                transaction.replace(R.id.content_frame, TrackingAnimeFragment()).commit()
+            when (item.itemId) {
+                R.id.nav_tracking -> {
+                    transaction.replace(R.id.content_frame, TrackingAnimeFragment()).commit()
+                }
+                R.id.nav_seasonal -> {
+                    transaction.replace(R.id.content_frame, SeasonalAnimeFragment()).commit()
+                }
+                R.id.nav_settings -> {
+                    // TODO not implemented
+                }
             }
-            R.id.nav_seasonal -> {
-                transaction.replace(R.id.content_frame, SeasonalAnimeFragment()).commit()
-            }
-            R.id.nav_settings -> {
-                // TODO not implemented
-            }
+
+            currentlySelectedItem = item.itemId
         }
 
         drawerLayout.closeDrawer(GravityCompat.START)

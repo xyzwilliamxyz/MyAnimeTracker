@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:background="@color/transparentDarkBackground">
+             android:background="@color/transparentDarkBackground"
+             android:id="@+id/framelayout_tracking">
 
     <ImageView
             android:layout_margin="3dp"

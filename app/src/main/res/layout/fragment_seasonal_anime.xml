@@ -6,14 +6,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/constraintlayout"
-        android:background="@color/defaultBackground"
-        android:padding="4dp">
+        android:background="@color/defaultBackground">
 
     <androidx.recyclerview.widget.RecyclerView
+            android:padding="4dp"
             android:id="@+id/rv_anime"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clipToPadding="false"
             app:spanCount="3"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
