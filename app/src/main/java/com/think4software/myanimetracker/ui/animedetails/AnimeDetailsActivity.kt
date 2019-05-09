@@ -6,7 +6,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.think4software.myanimetracker.R
 import com.think4software.myanimetracker.domain.Anime
-import kotlinx.android.synthetic.main.activity_home.*
+import com.think4software.myanimetracker.utils.GlideUtils
+import kotlinx.android.synthetic.main.activity_anime_details.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -18,18 +19,16 @@ class AnimeDetailsActivity : AppCompatActivity(), AnimeDetailsContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_anime_details)
 
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val anime = intent.getParcelableExtra<Anime>(ARGUMENT_ANIME)
-        supportActionBar?.title = anime.title
 
-        initView()
+        initView(anime)
 
         presenter.onStart()
     }
 
-    private fun initView() {
-
+    private fun initView(anime: Anime) {
+        tv_anime_title.text = anime.title
+        GlideUtils.imageIntoView(anime.coverUrl, iv_cover, this)
     }
 
     override fun showLoading(showHide: Boolean) {
